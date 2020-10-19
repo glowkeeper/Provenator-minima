@@ -50,59 +50,78 @@ let theme = createMuiTheme ({
     fontWeightRegular: 400,
     fontWeightMedium: 500,
     h1: {
-      fontSize:  "4vw",
-      fontWeight: 400,
+      fontSize:  "3vh",
+      fontWeight: 700,
       fontFamily: "\"Barlow\", \"Arial\", \"sans-serif\", \"Roboto\"",
       color: '#000000'
     },
     h2: {
-      fontSize: "3vw",
-      fontWeight: 400,
+      fontSize: "2.5vh",
+      fontWeight: 600,
       fontFamily: "\"Barlow\", \"Arial\", \"sans-serif\", \"Roboto\"",
       color: '#000000'
     },
     h3: {
-      fontSize: "2.5vw",
-      fontWeight: 400,
+      fontSize: "2vh",
+      fontWeight: 500,
       fontFamily: "\"Barlow\", \"Arial\", \"sans-serif\", \"Roboto\"",
       color: '#000000'
     },
     h4: {
-      fontSize: "2.2vw",
+      fontSize: "1.7vh",
+      fontWeight: 400,
+      fontFamily: "\"Barlow\", \"Arial\", \"sans-serif\", \"Roboto\"",
+      color: '#000000'
+    },
+    h5: {
+      fontSize: "1.6vh",
+      fontWeight: 400,
+      fontFamily: "\"Barlow\", \"Arial\", \"sans-serif\", \"Roboto\"",
+      color: '#000000'
+    },
+    h6: {
+      fontSize: "1.5vh",
       fontWeight: 400,
       fontFamily: "\"Barlow\", \"Arial\", \"sans-serif\", \"Roboto\"",
       color: '#000000'
     },
     subtitle1: {
-      fontSize: "2.2vw",
+      fontSize: "2vh",
+      fontWeight: 400,
+      fontFamily: "\"Barlow\", \"Arial\", \"sans-serif\", \"Roboto\"",
+      lineHeight: "1.5em",
+      color: '#000000'
+    },
+    subtitle2: {
+      fontSize: "2vh",
       fontWeight: 400,
       fontFamily: "\"Barlow\", \"Arial\", \"sans-serif\", \"Roboto\"",
       lineHeight: "1.5em",
       color: '#000000'
     },
     body1: {
-      fontSize: "2vw",
+      fontSize: "1.3vh",
       fontWeight: 400,
       fontFamily: "\"Lato\", \"Arial\", \"sans-serif\", \"Roboto\"",
       lineHeight: "1.46429em",
       color: '#000000'
     },
     body2: {
-      fontSize: "2vw",
+      fontSize: "1.3vh",
       fontWeight: 400,
       fontFamily: "\"Lato\", \"Arial\", \"sans-serif\", \"Roboto\"",
       lineHeight: "1.4em",
       color: '#000000'
     },
     caption: {
-      fontSize: "1.9vw",
+      fontSize: "1.2vh",
       fontWeight: 400,
       fontFamily: "\"Lato\", \"Arial\", \"sans-serif\", \"Roboto\"",
       lineHeight: "1.375em",
       color: orange[900]
     },
     button: {
-      fontSize: "1.9vw",
+      fontSize: "1.2vh",
       textTransform: "uppercase",
       fontWeight: 500,
       fontFamily: "\"Lato\", \"Arial\", \"sans-serif\", \"Roboto\"",
@@ -119,7 +138,7 @@ let theme = createMuiTheme ({
       secondary: "#000000"
     },
     primary: {
-      main: '#01acc6'
+      main: '#929396'
     },
     secondary: {
       main: '#ff671e'
@@ -143,14 +162,14 @@ const themeStyles = makeStyles({
   },
   logo: {
     padding: theme.spacing(1),
-    margin: theme.spacing(1),
-    position: 'absolute',
+    margin: theme.spacing(1)
   },
   header: {
     padding: theme.spacing(1),
     margin: theme.spacing(1),
     textAlign: 'left',
     background: 'linear-gradient(#27737e, #27737e)',
+    height: "10vh",
     width: "100vw"
   },
   title: {
@@ -171,6 +190,7 @@ const themeStyles = makeStyles({
     color: theme.palette.text.primary,
     background: 'linear-gradient(#FFFFFF, #FFFFFF)',
     overflow: 'auto',
+    height: '80vh',
     width: "100vw"
   },
   caption: {
@@ -183,8 +203,8 @@ const themeStyles = makeStyles({
     padding: theme.spacing(1),
     margin: theme.spacing(1),
     textAlign: 'center',
-    color: theme.palette.text.primary,
     background: 'linear-gradient(#27737e, #27737e)',
+    height: "10vh",
     width: "100vw"
   },
   home: {
@@ -200,9 +220,9 @@ const themeStyles = makeStyles({
     margin: theme.spacing(1),
     position: 'absolute',
     right: "1rem",
-    fontSize: "2vw",
+    fontSize: "5vh",
     textTransform: 'none',
-    color: theme.palette.common.white,
+    color: 'linear-gradient(#929396, #929396)',
     background: 'linear-gradient(#929396, #929396)'
   },
   spinner: {

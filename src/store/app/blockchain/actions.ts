@@ -56,9 +56,8 @@ export const status = () => {
           const thisValue: string = value as string
           const thisKey: string = key as string
           const thisLine =  `**${thisKey}** ${delimiter} ${thisValue}`
-          // Split long lines (max 80 chars (add 4 for markdown bold markup))
-          if (thisLine.length > 84) {
-            const thisStatus = thisLine.match(/.{1,84}/g)
+          if (thisLine.length > 50) {
+            const thisStatus = thisLine.match(/.{1,50}/g)
             if ( thisStatus ) {
               for (let i = 0; i < thisStatus.length; i++ ) {
                 status += `${thisStatus[i]}<br/>`

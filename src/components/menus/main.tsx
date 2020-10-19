@@ -43,20 +43,17 @@ export const Main = () => {
         <Button
           aria-controls="fade-menu"
           aria-haspopup="true"
-          size="small"
-          variant="contained"
           onClick={handleClick}
           className={themeClasses.menu}
         >
           <MenuOutlined />
         </Button>
         <MainMenu
-            id="customized-menu"
             anchorEl={anchorEl}
-            keepMounted
             open={Boolean(anchorEl)}
             onClose={handleClose}
-        >        
+            keepMounted
+        >
             <NavLink to={Local.help}>
                 <MainMenuItem onClick={handleClose}>
                     <ListItemIcon>

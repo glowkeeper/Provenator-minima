@@ -35,10 +35,26 @@ export const Footer = () => {
       className={themeClasses.footer}
       showLabels
     >
-      <BottomNavigationAction label={Paths.home} value={Local.home} icon={<HomeTwoToneIcon />} />
-      <BottomNavigationAction label={Paths.addFile} value={Local.addFile} icon={<AttachFileTwoToneIcon />} />
-      <BottomNavigationAction label={Paths.checkFile} value={Local.checkFile} icon={<CheckTwoToneIcon />} />
-      <BottomNavigationAction label={Paths.listFiles} value={Local.listFiles} icon={<TocTwoToneIcon />} />
+      <BottomNavigationAction
+        label={Paths.home}
+        value={Local.home}
+        icon={<HomeTwoToneIcon fontSize={'large'} />}
+      />
+      <BottomNavigationAction
+        label={Paths.addFile}
+        value={Local.addFile}
+        icon={<AttachFileTwoToneIcon fontSize={'large'} />}
+      />
+      <BottomNavigationAction
+        label={Paths.checkFile}
+        value={Local.checkFile}
+        icon={<CheckTwoToneIcon fontSize={'large'} />}
+      />
+      <BottomNavigationAction
+        label={Paths.listFiles}
+        value={Local.listFiles}
+        icon={<TocTwoToneIcon fontSize={'large'} />}
+      />
     </BottomNavigation>
   )
 }
