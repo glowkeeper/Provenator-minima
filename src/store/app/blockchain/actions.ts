@@ -28,12 +28,14 @@ export const init = () => {
 
           if( Minima.util.checkAllResponses(scriptJSON) ) {
 
-            let chainData:  ChainDataProps = {
+            let chainData: ChainDataProps = {
               data: {
                 scriptAddress: scriptJSON[0].response.address.hexaddress,
                 status: status
               }
             }
+
+            Minima.log("Init Script address: "+ chainData.data.scriptAddress)
             dispatch(write({data: chainData.data})(ChainDataActionTypes.ADD_DATA))
           }
       })
@@ -92,6 +94,8 @@ export const addFile = (props: FileProps) => {
     const txAmount = 0.01
 		const txnId = Math.floor(Math.random()*1000000000)
 
+    Minima.log("Script address: "+ scriptAddress)
+
     let txData = {
         id: txnId,
         summary: Transaction.unnecessary,
@@ -128,8 +132,6 @@ export const addFile = (props: FileProps) => {
 
       } else {
 
-          console.log("Going to add!")
-
           const addFileScript =
       			"txncreate "+ txnId + ";" +
       			"txnstate " + txnId + " 0 " + props.fileHash + ";" +
@@ -137,9 +139,9 @@ export const addFile = (props: FileProps) => {
             "txnpost " + txnId + ";" +
       			"txndelete " + txnId + ";";
 
-      		Minima.cmd( addFileScript , function(respJSON: any) {
+          Minima.log("Going to add!"+ addFileScript)
 
-              //console.log(respJSON)
+      		Minima.cmd( addFileScript , function(respJSON: any) {
               if( !Minima.util.checkAllResponses(respJSON) ) {
 
                   txData.summary = Transaction.failure
