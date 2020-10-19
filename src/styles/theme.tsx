@@ -162,11 +162,11 @@ const themeStyles = makeStyles({
   },
   logo: {
     padding: theme.spacing(1),
-    margin: theme.spacing(1)
+    margin: theme.spacing(0)
   },
   header: {
     padding: theme.spacing(1),
-    margin: theme.spacing(1),
+    margin: theme.spacing(0),
     textAlign: 'left',
     background: 'linear-gradient(#27737e, #27737e)',
     height: "10vh",
@@ -174,13 +174,13 @@ const themeStyles = makeStyles({
   },
   title: {
     padding: theme.spacing(1),
-    margin: theme.spacing(1),
+    margin: theme.spacing(0),
     textAlign: 'left',
     background: 'linear-gradient(#27737e, #27737e)'
   },
   subTitle: {
     padding: theme.spacing(1),
-    margin: theme.spacing(1),
+    margin: theme.spacing(0),
     textAlign: 'left',
     background: 'linear-gradient(#27737e, #27737e)'
   },
@@ -195,13 +195,13 @@ const themeStyles = makeStyles({
   },
   caption: {
     padding: theme.spacing(1),
-    margin: theme.spacing(1),
+    margin: theme.spacing(0),
     textAlign: 'center',
     background: 'linear-gradient(#27737e, #27737e)'
   },
   footer: {
     padding: theme.spacing(1),
-    margin: theme.spacing(1),
+    margin: theme.spacing(0),
     textAlign: 'center',
     background: 'linear-gradient(#27737e, #27737e)',
     height: "10vh",
