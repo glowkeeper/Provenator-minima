@@ -26,7 +26,9 @@ export const init = () => {
 
       Minima.cmd(`newscript ${Scripts.fileContract};`, function(scriptJSON: any) {
 
-          if( Minima.util.checkAllResponses(scriptJSON) ) {
+          console.log(scriptJSON)
+
+           if( Minima.util.checkAllResponses(scriptJSON) ) {
 
             let chainData: ChainDataProps = {
               data: {
@@ -37,6 +39,9 @@ export const init = () => {
 
             Minima.log("Init Script address: "+ chainData.data.scriptAddress)
             dispatch(write({data: chainData.data})(ChainDataActionTypes.ADD_DATA))
+          } else {
+
+            Minima.log("newscript failed")
           }
       })
 
