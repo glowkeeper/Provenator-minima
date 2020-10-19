@@ -24,9 +24,11 @@ export const init = () => {
       const state = getState()
       const status = state.chainInfo.data.status
 
-      Minima.log("Initialising newscript")
+      Minima.log(`Initialising newscript ${Scripts.fileContract}`)
 
-      Minima.cmd(`newscript ${Scripts.fileContract};`, function(respJSON: any) {
+      const scriptCommand = `newscript ${Scripts.fileContract};`
+
+      Minima.cmd(scriptCommand, function(respJSON: any) {
 
           Minima.log("In newscript")
           console.log(respJSON)
