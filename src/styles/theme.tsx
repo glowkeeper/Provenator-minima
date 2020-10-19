@@ -207,11 +207,11 @@ const themeStyles = makeStyles({
     height: "10vh",
     width: "100vw"
   },
-  home: {
-    background: 'linear-gradient(#FFFFFF, #FFFFFF)',
+  footerLinks: {
+    background: 'linear-gradient(#27737e, #27737e)',
     textAlign: 'center'
   },
-  homeLink: {
+  link: {
     color: theme.palette.text.primary,
     textDecoration: 'none'
   },

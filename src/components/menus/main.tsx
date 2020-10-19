@@ -54,7 +54,7 @@ export const Main = () => {
             onClose={handleClose}
             keepMounted
         >
-            <NavLink to={Local.help}>
+            <NavLink to={Local.help} className={themeClasses.link}>
                 <MainMenuItem onClick={handleClose}>
                     <ListItemIcon>
                       <HelpIcon/>
@@ -63,7 +63,7 @@ export const Main = () => {
                 </MainMenuItem>
             </NavLink>
 
-            <NavLink to={Local.contact}>
+            <NavLink to={Local.contact} className={themeClasses.link}>
                 <MainMenuItem onClick={handleClose}>
                     <ListItemIcon>
                       <ContactMailIcon/>
@@ -72,7 +72,7 @@ export const Main = () => {
                 </MainMenuItem>
             </NavLink>
 
-            <NavLink to={Local.about}>
+            <NavLink to={Local.about} className={themeClasses.link}>
                 <MainMenuItem onClick={handleClose}>
                     <ListItemIcon>
                       <InfoIcon/>
@@ -81,7 +81,7 @@ export const Main = () => {
                 </MainMenuItem>
             </NavLink>
 
-            <NavLink to={Local.blockchain}>
+            <NavLink to={Local.blockchain} className={themeClasses.link}>
                 <MainMenuItem onClick={handleClose}>
                     <ListItemIcon>
                       <PermDataSettingIcon/>

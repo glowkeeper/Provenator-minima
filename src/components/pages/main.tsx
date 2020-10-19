@@ -1,4 +1,5 @@
 import React from 'react'
+import { NavLink } from 'react-router-dom'
 
 import Markdown from 'react-markdown'
 import Grid from '@material-ui/core/Grid'
@@ -11,9 +12,16 @@ import { Footer } from './footer'
 import { Content } from '../content'
 import { App } from '../../config/strings'
 
+import HomeTwoToneIcon from '@material-ui/icons/HomeTwoTone'
+import CheckTwoToneIcon from '@material-ui/icons/CheckTwoTone';
+import AttachFileTwoToneIcon from '@material-ui/icons/AttachFileTwoTone'
+import TocTwoToneIcon from '@material-ui/icons/TocTwoTone'
+
 import minimaLogo from '../../images/minimaLogo.png'
 
 import { themeStyles } from '../../styles'
+
+import { Paths, Local } from '../../config'
 
 export const Main = () => {
 
@@ -57,7 +65,77 @@ export const Main = () => {
             </Grid>
           </Paper>
 
-          <Footer />
+          <Paper className={classes.footer} square={true}>
+            <Grid item container xs={12}>
+               <Grid item xs={3}>
+
+                   <NavLink to={Local.home} className={classes.link}>
+                       <Grid item>
+                          <Paper className={classes.footerLinks} elevation={0} square={true}>
+                            <HomeTwoToneIcon/>
+                          </Paper>
+                       </Grid>
+                       <Grid item>
+                          <Paper className={classes.footerLinks} elevation={0} square={true}>
+                              {Paths.home}
+                          </Paper>
+                       </Grid>
+                   </NavLink>
+
+                </Grid>
+
+               <Grid item xs={3}>
+
+                   <NavLink to={Local.addFile} className={classes.link}>
+                       <Grid item>
+                          <Paper className={classes.footerLinks} elevation={0} square={true}>
+                            <AttachFileTwoToneIcon />
+                          </Paper>
+                       </Grid>
+                       <Grid item>
+                          <Paper className={classes.footerLinks} elevation={0} square={true}>
+                              {Paths.addFile}
+                          </Paper>
+                       </Grid>
+                   </NavLink>
+
+                </Grid>
+
+                <Grid item xs={3}>
+
+                    <NavLink to={Local.checkFile} className={classes.link}>
+                        <Grid item>
+                           <Paper className={classes.footerLinks} elevation={0} square={true}>
+                             <CheckTwoToneIcon />
+                           </Paper>
+                        </Grid>
+                        <Grid item>
+                           <Paper className={classes.footerLinks} elevation={0} square={true}>
+                               {Paths.checkFile}
+                           </Paper>
+                        </Grid>
+                    </NavLink>
+
+                 </Grid>
+
+                 <Grid item xs={3}>
+
+                     <NavLink to={Local.listFiles} className={classes.link}>
+                         <Grid item>
+                            <Paper className={classes.footerLinks} elevation={0} square={true}>
+                              <TocTwoToneIcon />
+                            </Paper>
+                         </Grid>
+                         <Grid item>
+                            <Paper className={classes.footerLinks} elevation={0} square={true}>
+                                {Paths.listFiles}
+                            </Paper>
+                         </Grid>
+                     </NavLink>
+
+                  </Grid>
+            </Grid>
+          </Paper>
 
         </Grid>
       </div>
