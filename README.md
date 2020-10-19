@@ -7,7 +7,7 @@ This is a [Minima](https://github.com/minima-global) port of [Provenator](https:
 
 Provenator is an application for proving the origins of captured digital media. It uses cryptographic tools and blockchain technology; by using the trust mechanisms of blockchains, the application aims to show, beyond doubt, the provenance of any source of digital media.
 
-Provenator is the result of the academic paper called, [Fake News - a Technological Approach to Proving Provenance Using Blockchains](https://doi.org/10.1089/big.2017.0071), by Steve Huckle and Martin White, of the [University of Sussex Informatics Department](http://www.sussex.ac.uk/informatics/), which was published in a special issue on Computational Propaganda and Political Big Data for Mary Anne Liebert's [Big Data Journal](http://online.liebertpub.com/toc/big/5/4).
+Provenator is the result of the academic paper [Fake News - a Technological Approach to Proving Provenance Using Blockchains](https://doi.org/10.1089/big.2017.0071), which was published in a special issue on Computational Propaganda and Political Big Data for Mary Anne Liebert's [Big Data Journal](http://online.liebertpub.com/toc/big/5/4).
 
 ## Table of Contents
 
