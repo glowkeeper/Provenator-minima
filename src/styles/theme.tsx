@@ -154,12 +154,8 @@ const themeStyles = makeStyles({
   root: {
     background: 'linear-gradient(#FFFFFF, #FFFFFF)',
     color: theme.palette.text.primary,
-    height: "100%",
-    width: "100%"
-  },
-  grid: {
-    height: "100%",
-    width: "100%"
+    height: "100vh",
+    width: "100vw"
   },
   logo: {
     padding: theme.spacing(1),
@@ -190,7 +186,6 @@ const themeStyles = makeStyles({
     margin: theme.spacing(1),
     color: theme.palette.text.primary,
     background: 'linear-gradient(#FFFFFF, #FFFFFF)',
-    height: "100%vh",
     width: "100%"
   },
   caption: {

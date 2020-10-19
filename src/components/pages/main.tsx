@@ -21,7 +21,7 @@ export const Main = () => {
 
   return (
       <div className={classes.root}>
-        <Grid container className={classes.grid}>
+        <Grid container>
 
           <Paper className={classes.header} square={true}>
             <Grid item container xs={12}>
