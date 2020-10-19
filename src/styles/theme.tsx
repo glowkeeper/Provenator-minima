@@ -50,59 +50,59 @@ let theme = createMuiTheme ({
     fontWeightRegular: 400,
     fontWeightMedium: 500,
     h1: {
-      fontSize: "2rem",
+      fontSize:  "4vw",
       fontWeight: 400,
       fontFamily: "\"Barlow\", \"Arial\", \"sans-serif\", \"Roboto\"",
       color: '#000000'
     },
     h2: {
-      fontSize: "1.5rem",
+      fontSize: "3vw",
       fontWeight: 400,
       fontFamily: "\"Barlow\", \"Arial\", \"sans-serif\", \"Roboto\"",
       color: '#000000'
     },
     h3: {
-      fontSize: "1.25rem",
+      fontSize: "2.5vw",
       fontWeight: 400,
       fontFamily: "\"Barlow\", \"Arial\", \"sans-serif\", \"Roboto\"",
       color: '#000000'
     },
     h4: {
-      fontSize: "1.1rem",
+      fontSize: "2.2vw",
       fontWeight: 400,
       fontFamily: "\"Barlow\", \"Arial\", \"sans-serif\", \"Roboto\"",
       color: '#000000'
     },
     subtitle1: {
-      fontSize: "0.9rem",
+      fontSize: "2.2vw",
       fontWeight: 400,
       fontFamily: "\"Barlow\", \"Arial\", \"sans-serif\", \"Roboto\"",
       lineHeight: "1.5em",
       color: '#000000'
     },
     body1: {
-      fontSize: "0.875rem",
+      fontSize: "2vw",
       fontWeight: 400,
       fontFamily: "\"Lato\", \"Arial\", \"sans-serif\", \"Roboto\"",
       lineHeight: "1.46429em",
       color: '#000000'
     },
     body2: {
-      fontSize: "0.8rem",
+      fontSize: "2vw",
       fontWeight: 400,
       fontFamily: "\"Lato\", \"Arial\", \"sans-serif\", \"Roboto\"",
       lineHeight: "1.4em",
       color: '#000000'
     },
     caption: {
-      fontSize: "0.75rem",
+      fontSize: "1.9vw",
       fontWeight: 400,
       fontFamily: "\"Lato\", \"Arial\", \"sans-serif\", \"Roboto\"",
       lineHeight: "1.375em",
       color: orange[900]
     },
     button: {
-      fontSize: "0.875rem",
+      fontSize: "1.9vw",
       textTransform: "uppercase",
       fontWeight: 500,
       fontFamily: "\"Lato\", \"Arial\", \"sans-serif\", \"Roboto\"",
@@ -163,7 +163,7 @@ const themeStyles = makeStyles({
   },
   logo: {
     padding: theme.spacing(1),
-    margin: theme.spacing(1),    
+    margin: theme.spacing(1),
     position: 'absolute',
   },
   header: {
