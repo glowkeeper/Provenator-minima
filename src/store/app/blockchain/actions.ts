@@ -24,15 +24,18 @@ export const init = () => {
       const state = getState()
       const status = state.chainInfo.data.status
 
-      Minima.cmd(`newscript ${Scripts.fileContract};`, function(scriptJSON: any) {
+      Minima.log("Initialising newscript")
 
-          console.log(scriptJSON)
+      Minima.cmd(`newscript ${Scripts.fileContract};`, function(respJSON: any) {
 
-           if( Minima.util.checkAllResponses(scriptJSON) ) {
+          Minima.log("In newscript")
+          console.log(respJSON)
+
+           if( Minima.util.checkAllResponses(respJSON) ) {
 
             let chainData: ChainDataProps = {
               data: {
-                scriptAddress: scriptJSON[0].response.address.hexaddress,
+                scriptAddress: respJSON[0].response.address.hexaddress,
                 status: status
               }
             }
