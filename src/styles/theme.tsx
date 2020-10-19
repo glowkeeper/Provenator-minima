@@ -134,22 +134,6 @@ let theme = createMuiTheme ({
 theme = responsiveFontSizes(theme)
 theme.spacing(4)
 
-/*
-Brand blue:
-#38348B
-Accent colours:
-#377D82
-#4CB79C
-#A1D4C7
-#F08363
-#F08339
-#FDC73E
-#FFE6AF
-White & grey:
-#FFFFFF
-#878382
-*/
-
 const themeStyles = makeStyles({
   root: {
     background: 'linear-gradient(#FFFFFF, #FFFFFF)',
@@ -167,7 +151,7 @@ const themeStyles = makeStyles({
     margin: theme.spacing(1),
     textAlign: 'left',
     background: 'linear-gradient(#27737e, #27737e)',
-    width: "100%"
+    width: "100vw"
   },
   title: {
     padding: theme.spacing(1),
@@ -186,7 +170,8 @@ const themeStyles = makeStyles({
     margin: theme.spacing(1),
     color: theme.palette.text.primary,
     background: 'linear-gradient(#FFFFFF, #FFFFFF)',
-    width: "100%"
+    overflow: 'auto',
+    width: "100vw"
   },
   caption: {
     padding: theme.spacing(1),
@@ -200,7 +185,7 @@ const themeStyles = makeStyles({
     textAlign: 'center',
     color: theme.palette.text.primary,
     background: 'linear-gradient(#27737e, #27737e)',
-    width: "100%"
+    width: "100vw"
   },
   home: {
     background: 'linear-gradient(#FFFFFF, #FFFFFF)',
@@ -215,7 +200,7 @@ const themeStyles = makeStyles({
     margin: theme.spacing(1),
     position: 'absolute',
     right: "1rem",
-    fontSize: "2rem",
+    fontSize: "2vw",
     textTransform: 'none',
     color: theme.palette.common.white,
     background: 'linear-gradient(#929396, #929396)'
