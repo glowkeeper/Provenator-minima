@@ -209,11 +209,13 @@ const themeStyles = makeStyles({
   },
   footerLinks: {
     background: 'linear-gradient(#27737e, #27737e)',
-    textAlign: 'center'
+    textAlign: 'center',
+    fontSize: "2vh",
   },
   link: {
     color: theme.palette.text.primary,
-    textDecoration: 'none'
+    textDecoration: 'none',
+    fontSize: "2vh",
   },
   menu: {
     padding: theme.spacing(1),

@@ -57,7 +57,7 @@ export const Main = () => {
             <NavLink to={Local.help} className={themeClasses.link}>
                 <MainMenuItem onClick={handleClose}>
                     <ListItemIcon>
-                      <HelpIcon/>
+                      <HelpIcon />
                     </ListItemIcon>
                     <ListItemText primary={Paths.help} />
                 </MainMenuItem>
@@ -66,7 +66,7 @@ export const Main = () => {
             <NavLink to={Local.contact} className={themeClasses.link}>
                 <MainMenuItem onClick={handleClose}>
                     <ListItemIcon>
-                      <ContactMailIcon/>
+                      <ContactMailIcon />
                     </ListItemIcon>
                     <ListItemText primary={Paths.contact} />
                 </MainMenuItem>
@@ -75,7 +75,7 @@ export const Main = () => {
             <NavLink to={Local.about} className={themeClasses.link}>
                 <MainMenuItem onClick={handleClose}>
                     <ListItemIcon>
-                      <InfoIcon/>
+                      <InfoIcon />
                     </ListItemIcon>
                     <ListItemText primary={Paths.about} />
                 </MainMenuItem>
@@ -84,7 +84,7 @@ export const Main = () => {
             <NavLink to={Local.blockchain} className={themeClasses.link}>
                 <MainMenuItem onClick={handleClose}>
                     <ListItemIcon>
-                      <PermDataSettingIcon/>
+                      <PermDataSettingIcon />
                     </ListItemIcon>
                     <ListItemText primary={Paths.blockchain} />
                 </MainMenuItem>

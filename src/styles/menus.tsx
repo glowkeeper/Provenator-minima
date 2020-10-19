@@ -8,7 +8,7 @@ import MenuItem from '@material-ui/core/MenuItem'
 export const MainMenu = withStyles({
   paper: {
     background:  'linear-gradient(#929396, #929396)',
-    border: '1px solid #d3d4d5',
+    border: '1px solid #d3d4d5'
   },
 })((props: any) => (
   <Menu

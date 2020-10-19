@@ -8,7 +8,6 @@ import Paper from '@material-ui/core/Paper'
 import { ChainInit } from '../blockchain/blockchain'
 
 import { Main as MainMenu } from '../menus'
-import { Footer } from './footer'
 import { Content } from '../content'
 import { App } from '../../config/strings'
 
@@ -72,7 +71,7 @@ export const Main = () => {
                    <NavLink to={Local.home} className={classes.link}>
                        <Grid item>
                           <Paper className={classes.footerLinks} elevation={0} square={true}>
-                            <HomeTwoToneIcon/>
+                            <HomeTwoToneIcon fontSize={'large'}/>
                           </Paper>
                        </Grid>
                        <Grid item>
@@ -89,7 +88,7 @@ export const Main = () => {
                    <NavLink to={Local.addFile} className={classes.link}>
                        <Grid item>
                           <Paper className={classes.footerLinks} elevation={0} square={true}>
-                            <AttachFileTwoToneIcon />
+                            <AttachFileTwoToneIcon fontSize={'large'}/>
                           </Paper>
                        </Grid>
                        <Grid item>
@@ -106,7 +105,7 @@ export const Main = () => {
                     <NavLink to={Local.checkFile} className={classes.link}>
                         <Grid item>
                            <Paper className={classes.footerLinks} elevation={0} square={true}>
-                             <CheckTwoToneIcon />
+                             <CheckTwoToneIcon fontSize={'large'}/>
                            </Paper>
                         </Grid>
                         <Grid item>
@@ -123,7 +122,7 @@ export const Main = () => {
                      <NavLink to={Local.listFiles} className={classes.link}>
                          <Grid item>
                             <Paper className={classes.footerLinks} elevation={0} square={true}>
-                              <TocTwoToneIcon />
+                              <TocTwoToneIcon fontSize={'large'}/>
                             </Paper>
                          </Grid>
                          <Grid item>
