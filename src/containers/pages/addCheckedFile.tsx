@@ -17,7 +17,7 @@ import Tooltip from '@material-ui/core/Tooltip'
 
 import Grid from '@material-ui/core/Grid'
 import RightCircleOutlined from '@ant-design/icons/lib/icons/RightCircleOutlined'
-import { Okay, OptionsStyles } from '../../styles'
+import { Okay } from '../../styles'
 
 import { addFile } from '../../store/app/blockchain'
 import { initialise as txInitialise } from '../../store/app/tx/actions'

@@ -16,7 +16,7 @@ import FileReaderInput from 'react-file-reader-input'
 
 import Grid from '@material-ui/core/Grid'
 import RightCircleOutlined from '@ant-design/icons/lib/icons/RightCircleOutlined'
-import { Okay, OptionsStyles } from '../../styles'
+import { Okay } from '../../styles'
 
 import { checkFile } from '../../store/app/blockchain'
 import { initialise as checkInitialise } from '../../store/app/check/actions'

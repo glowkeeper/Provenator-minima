@@ -50,10 +50,10 @@ let theme = createMuiTheme ({
     fontWeightRegular: 400,
     fontWeightMedium: 500,
     h1: {
-      fontSize:  "3vh",
+      fontSize:  "30px",
       fontWeight: 700,
       fontFamily: "\"Barlow\", \"Arial\", \"sans-serif\", \"Roboto\"",
-      color: '#000000'
+      color: '#000000',
     },
     h2: {
       fontSize: "2.5vh",
@@ -96,28 +96,24 @@ let theme = createMuiTheme ({
       fontSize: "2vh",
       fontWeight: 400,
       fontFamily: "\"Barlow\", \"Arial\", \"sans-serif\", \"Roboto\"",
-      lineHeight: "1.5em",
       color: '#000000'
     },
     body1: {
-      fontSize: "1.3vh",
+      fontSize: "1rem",
       fontWeight: 400,
       fontFamily: "\"Lato\", \"Arial\", \"sans-serif\", \"Roboto\"",
-      lineHeight: "1.46429em",
       color: '#000000'
     },
     body2: {
-      fontSize: "1.3vh",
+      fontSize: "1rem",
       fontWeight: 400,
       fontFamily: "\"Lato\", \"Arial\", \"sans-serif\", \"Roboto\"",
-      lineHeight: "1.4em",
       color: '#000000'
     },
     caption: {
       fontSize: "1.2vh",
       fontWeight: 400,
       fontFamily: "\"Lato\", \"Arial\", \"sans-serif\", \"Roboto\"",
-      lineHeight: "1.375em",
       color: orange[900]
     },
     button: {
@@ -158,7 +154,8 @@ const themeStyles = makeStyles({
     background: 'linear-gradient(#FFFFFF, #FFFFFF)',
     color: theme.palette.text.primary,
     height: "100vh",
-    width: "100vw"
+    width: "100vw",
+    position: 'relative'
   },
   logo: {
     padding: theme.spacing(1),
@@ -169,7 +166,7 @@ const themeStyles = makeStyles({
     margin: theme.spacing(0),
     textAlign: 'left',
     background: 'linear-gradient(#27737e, #27737e)',
-    height: "10vh",
+    height: "75px",
     width: "100vw"
   },
   title: {
@@ -205,27 +202,28 @@ const themeStyles = makeStyles({
     textAlign: 'center',
     background: 'linear-gradient(#27737e, #27737e)',
     height: "10vh",
-    width: "100vw"
+    width: "100vw",
+    position: 'absolute',
+    bottom: '0'
   },
   footerLinks: {
     background: 'linear-gradient(#27737e, #27737e)',
     textAlign: 'center',
     fontSize: "2vh",
+    fontWeight: 400,
+    fontFamily: "\"Lato\", \"Arial\", \"sans-serif\", \"Roboto\"",
   },
   link: {
     color: theme.palette.text.primary,
     textDecoration: 'none',
     fontSize: "2vh",
+    fontWeight: 400,
+    fontFamily: "\"Lato\", \"Arial\", \"sans-serif\", \"Roboto\"",
   },
   menu: {
     padding: theme.spacing(1),
     margin: theme.spacing(1),
-    position: 'absolute',
-    right: "1rem",
-    fontSize: "5vh",
-    textTransform: 'none',
-    color: 'linear-gradient(#929396, #929396)',
-    background: 'linear-gradient(#929396, #929396)'
+    background: 'linear-gradient(#27737e, #27737e)',
   },
   spinner: {
      position: 'absolute',
