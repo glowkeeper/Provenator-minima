@@ -21,16 +21,16 @@ import { Minima } from './minima'
 export const init = () => {
     return async (dispatch: AppDispatch, getState: Function) => {
 
+      Minima.init()
+
       Minima.logging = true
 
       const state = getState()
       const status = state.chainInfo.data.status
 
-      const scriptCommand = "extrascript " + Scripts.fileContract + ";"
+      Minima.log("Initialising "+Scripts.fileContract)
 
-      Minima.log("Initialising "+scriptCommand)
-
-      Minima.cmd(scriptCommand, function(respJSON: any) {
+      Minima.cmd("extrascript \"" + Scripts.fileContract + "\";", function(respJSON: any) {
 
           Minima.log("In newscript")
           console.log(respJSON)
@@ -51,8 +51,6 @@ export const init = () => {
             Minima.log("newscript failed")
           }
       })
-
-      Minima.init()
   }
 }
 
