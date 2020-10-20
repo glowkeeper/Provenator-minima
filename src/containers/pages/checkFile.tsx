@@ -164,6 +164,7 @@ const getFile = (props: Props) => {
         <p>
           <b>{FileConfig.fileName}</b>: {fileName}
         </p>
+        <b>{FileConfig.hash}</b>:<br/>
         <Formik
           initialValues={ {fileHash: hash} }
           enableReinitialize={true}
@@ -182,7 +183,6 @@ const getFile = (props: Props) => {
           {(formProps: FormikProps<any>) => (
             <Form>
               <FormControl fullWidth={true}>
-                  <label htmlFor="fileHash"><p><b>{FileConfig.hash}</b>:</p></label>
                   <Field
                     name='fileHash'
                     component={TextField}
