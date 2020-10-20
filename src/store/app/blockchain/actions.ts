@@ -23,17 +23,17 @@ export const init = () => {
 
       Minima.init()
 
-      Minima.logging = true
+      //Minima.logging = true
 
       const state = getState()
       const status = state.chainInfo.data.status
 
-      Minima.log("Initialising "+Scripts.fileContract)
+      //Minima.log("Initialising "+Scripts.fileContract)
 
       Minima.cmd("extrascript \"" + Scripts.fileContract + "\";", function(respJSON: any) {
 
-          Minima.log("In newscript")
-          console.log(respJSON)
+          /*Minima.log("In newscript")
+          console.log(respJSON)*/
 
            if( Minima.util.checkAllResponses(respJSON) ) {
 
@@ -44,11 +44,11 @@ export const init = () => {
               }
             }
 
-            Minima.log("Init Script address: "+ chainData.data.scriptAddress)
+            //Minima.log("Init Script address: "+ chainData.data.scriptAddress)
             dispatch(write({data: chainData.data})(ChainDataActionTypes.ADD_DATA))
           } else {
 
-            Minima.log("newscript failed")
+            Minima.log("extrascript failed")
           }
       })
   }
@@ -104,7 +104,7 @@ export const addFile = (props: FileProps) => {
     const txAmount = 0.01
 		const txnId = Math.floor(Math.random()*1000000000)
 
-    Minima.log("Script address: "+ scriptAddress)
+    //Minima.log("Script address: "+ scriptAddress)
 
     let txData = {
         id: txnId,
@@ -149,7 +149,7 @@ export const addFile = (props: FileProps) => {
             "txnpost " + txnId + ";" +
       			"txndelete " + txnId + ";";
 
-          Minima.log("Going to add!"+ addFileScript)
+          //Minima.log("Going to add!"+ addFileScript)
 
       		Minima.cmd( addFileScript , function(respJSON: any) {
               if( !Minima.util.checkAllResponses(respJSON) ) {
