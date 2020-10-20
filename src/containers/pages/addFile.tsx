@@ -33,8 +33,6 @@ import {
     TxData
 } from '../../store/types'
 
-//import { TxHelper } from '../../components/tx/txHelper'
-
 const addFileSchema = Yup.object().shape({
   fileHash: Yup.string()
     .required(`${GeneralError.required}`)
@@ -168,7 +166,7 @@ const getFile = (props: Props) => {
           {(formProps: FormikProps<any>) => (
             <Form>
               <FormControl fullWidth={true}>
-                  <label htmlFor="fileHash"><b>{FileConfig.hash}</b>:</label>
+                  <label htmlFor="fileHash"><p><b>{FileConfig.hash}</b>:</p></label>
                   <Field
                     name='fileHash'
                     component={TextField}

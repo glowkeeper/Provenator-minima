@@ -103,7 +103,7 @@ const getFile = (props: Props) => {
           {(formProps: FormikProps<any>) => (
             <Form>
               <FormControl fullWidth={true}>
-                  <label htmlFor="fileHash"><b>{FileConfig.hash}</b>:</label>
+                  <label htmlFor="fileHash"><p><b>{FileConfig.hash}</b>:</p></label>
                   <Field
                     name='fileHash'
                     component={TextField}
