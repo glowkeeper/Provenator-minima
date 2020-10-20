@@ -24,7 +24,7 @@ export const init = () => {
       const state = getState()
       const status = state.chainInfo.data.status
 
-      const scriptCommand = "newscript " + Scripts.fileContract + ";"
+      const scriptCommand = "extrascript " + Scripts.fileContract + ";"
 
       Minima.log("Initialising "+scriptCommand)
 
