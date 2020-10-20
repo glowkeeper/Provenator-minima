@@ -21,6 +21,8 @@ import { Minima } from './minima'
 export const init = () => {
     return async (dispatch: AppDispatch, getState: Function) => {
 
+      Minima.logging = true
+
       const state = getState()
       const status = state.chainInfo.data.status
 
