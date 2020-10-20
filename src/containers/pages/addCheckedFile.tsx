@@ -34,8 +34,6 @@ import {
     TxData
 } from '../../store/types'
 
-//import { TxHelper } from '../../components/tx/txHelper'
-
 const addFileSchema = Yup.object().shape({
   fileHash: Yup.string()
     .required(`${GeneralError.required}`)
@@ -85,7 +83,7 @@ const getFile = (props: Props) => {
         <h2>{FileConfig.headingAddFile}</h2>
         <hr />
         <p>
-            {FileConfig.fileName}: {fileName}
+          <b>{FileConfig.fileName}</b>: {fileName}
         </p>
         <Formik
           initialValues={ {fileHash: hash} }
@@ -105,9 +103,9 @@ const getFile = (props: Props) => {
           {(formProps: FormikProps<any>) => (
             <Form>
               <FormControl fullWidth={true}>
+                  <label htmlFor="fileHash"><b>{FileConfig.hash}</b>:</label>
                   <Field
                     name='fileHash'
-                    label={FileConfig.hash}
                     component={TextField}
                   />
                   <Grid container>

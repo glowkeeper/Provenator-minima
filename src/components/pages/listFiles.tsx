@@ -34,7 +34,6 @@ const filesReader = (props: Props) => {
 
     const themeClasses = themeStyles()
 
-
     useEffect(() => {
 
         if ( isFirstRun.current ) {

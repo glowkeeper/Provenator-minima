@@ -148,7 +148,7 @@ const getFile = (props: Props) => {
             </Tooltip>
         </FileReaderInput>
         <p>
-            {FileConfig.fileName}: {fileName}
+          <b>{FileConfig.fileName}</b>: {fileName}
         </p>
         <Formik
           initialValues={ {fileHash: hash} }
@@ -168,9 +168,9 @@ const getFile = (props: Props) => {
           {(formProps: FormikProps<any>) => (
             <Form>
               <FormControl fullWidth={true}>
+                  <label htmlFor="fileHash"><b>{FileConfig.hash}</b>:</label>
                   <Field
                     name='fileHash'
-                    label={FileConfig.hash}
                     component={TextField}
                   />
                   <Grid container>
