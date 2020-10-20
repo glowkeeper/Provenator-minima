@@ -97,6 +97,7 @@ class File {
     static readonly fileTip = "Select a file to be hashed"
     static readonly fileName = "Filename"
     static readonly hash = "Hash"
+    static readonly checkTip = `Check the hash of the file exists on ${App.title}`
     static readonly submitTip = `Add the hash of the file to ${App.title}`
     static readonly loadingError = "File did not load"
 
