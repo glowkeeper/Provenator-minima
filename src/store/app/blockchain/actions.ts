@@ -13,7 +13,7 @@ import {
   Coin
 } from '../../types'
 
-import { Transaction, Scripts, File, Misc } from '../../../config'
+import { Transaction, File, Misc } from '../../../config'
 
 // @ts-ignore
 import { Minima } from './minima'
@@ -22,35 +22,44 @@ export const init = () => {
     return async (dispatch: AppDispatch, getState: Function) => {
 
       Minima.init()
-
       //Minima.logging = true
 
       const state = getState()
       const status = state.chainInfo.data.status
 
-      //Minima.log("Initialising "+Scripts.fileContract)
+      Minima.cmd("random;", function(respJSON: any) {
+          //console.log("random: ", respJSON)
 
-      Minima.cmd("extrascript \"" + Scripts.fileContract + "\";", function(respJSON: any) {
+          if( Minima.util.checkAllResponses(respJSON) ) {
 
-          /*Minima.log("In newscript")
-          console.log(respJSON)*/
+            const rand = respJSON[0].response.random
+            const fileContract  = `let this=${rand} return false`
 
-           if( Minima.util.checkAllResponses(respJSON) ) {
+            //console.log(fileContract)
 
-            let chainData: ChainDataProps = {
-              data: {
-                scriptAddress: respJSON[0].response.address.hexaddress,
-                status: status
-              }
-            }
+            Minima.cmd("newscript \"" + fileContract + "\";", function(respJSON: any) {
 
-            //Minima.log("Init Script address: "+ chainData.data.scriptAddress)
-            dispatch(write({data: chainData.data})(ChainDataActionTypes.ADD_DATA))
-          } else {
+                /*Minima.log("In newscript")
+                console.log(respJSON)*/
 
-            Minima.log("extrascript failed")
+                 if( Minima.util.checkAllResponses(respJSON) ) {
+
+                  let chainData: ChainDataProps = {
+                    data: {
+                      scriptAddress: respJSON[0].response.address.hexaddress,
+                      status: status
+                    }
+                  }
+
+                  //Minima.log("Init Script address: "+ chainData.data.scriptAddress)
+                  dispatch(write({data: chainData.data})(ChainDataActionTypes.ADD_DATA))
+                } else {
+
+                  Minima.log("newscript failed")
+                }
+            })
           }
-      })
+     	})
   }
 }
 
@@ -107,12 +116,12 @@ export const addFile = (props: FileProps) => {
     //Minima.log("Script address: "+ scriptAddress)
 
     let txData = {
-        id: txnId,
+        txId: txnId,
         summary: Transaction.unnecessary,
         time: new Date(Date.now()).toString()
     }
 
-    Minima.cmd("coins;", function(respJSON: any) {
+    Minima.cmd("coins relevant address:"+ scriptAddress + ";", function(respJSON: any) {
 
       let checkData: CheckData = {
         in: false,
@@ -179,7 +188,7 @@ export const checkFile = (props: FileProps) => {
         block: `${File.noBlock}`
       }
 
-      Minima.cmd("coins;", function(respJSON: any) {
+      Minima.cmd("coins relevant address:"+ scriptAddress + ";", function(respJSON: any) {
 
         let checkData: CheckData = {
           in: false,
@@ -219,11 +228,14 @@ export const getFiles = () => {
 
       var fileData: Coin[] = []
 
-      Minima.cmd("coins;", function(respJSON: any) {
+      Minima.cmd("coins relevant address:"+ scriptAddress + ";", function(respJSON: any) {
+      //Minima.cmd("coins;", function(respJSON: any) {
+
+        console.log("blah: ", respJSON, " address: ", scriptAddress)
 
         if( Minima.util.checkAllResponses(respJSON) ) {
 
-          //console.log(respJSON)
+
           const coins = respJSON[0].response.coins
           for ( let i = 0; i < coins.length; i++ ) {
             if (coins[i].data.coin.address == scriptAddress) {

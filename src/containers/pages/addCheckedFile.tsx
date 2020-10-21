@@ -68,9 +68,8 @@ const getFile = (props: Props) => {
       } else {
 
         const txData: TxData = props.info.data as TxData
-        const txSummary = txData.summary
-        const infoData = getDictEntries(props.info)
-        if( txData.id != "" ) {
+        if( txData.txId != "" ) {            
+            const infoData = getDictEntries(props.info)
             setInfo( infoData )
             setSubmit(false)
         }

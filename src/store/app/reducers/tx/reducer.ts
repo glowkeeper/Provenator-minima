@@ -2,7 +2,7 @@ import { ActionProps, TransactionActionTypes, TransactionProps } from '../../../
 
 const initialState: TransactionProps = {
   data: {
-    id: "",
+    txId: "",
     summary: "",
     time: ""
   }

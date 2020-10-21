@@ -79,8 +79,9 @@ const getFile = (props: Props) => {
 
         const checkData: CheckData = props.info.data as CheckData
         const checkBlock = checkData.block
-        const infoData = getDictEntries(props.info)
         if( checkBlock != "" ) {
+
+            const infoData = getDictEntries(props.info)
             setInfo( infoData )
             setSubmit(false)
             if ( checkBlock == FileConfig.noBlock ) {

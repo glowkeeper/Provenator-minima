@@ -4,7 +4,7 @@ import { write } from '../../actions'
 export const initialise = () => {
   return async (dispatch: AppDispatch) => {
     const initData: TxData = {
-        id: "",
+        txId: "",
         summary: "",
         time: ""
     }
