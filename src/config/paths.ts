@@ -1,3 +1,8 @@
+class Config {
+
+  static readonly hexFile = "hex.txt"
+}
+
 class Local {
 
   static readonly home = '/'
@@ -24,4 +29,4 @@ class Remote {
     static readonly port = '9004'
 }
 
-export { Local, Remote }
+export { Config, Local, Remote }

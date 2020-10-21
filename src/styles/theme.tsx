@@ -56,68 +56,68 @@ let theme = createMuiTheme ({
       color: '#000000',
     },
     h2: {
-      fontSize: "2.5vh",
+      fontSize: "2.7vh",
       fontWeight: 600,
       fontFamily: "\"Barlow\", \"Arial\", \"sans-serif\", \"Roboto\"",
       color: '#000000'
     },
     h3: {
-      fontSize: "2vh",
+      fontSize: "2.5vh",
       fontWeight: 500,
       fontFamily: "\"Barlow\", \"Arial\", \"sans-serif\", \"Roboto\"",
       color: '#000000'
     },
     h4: {
-      fontSize: "1.7vh",
+      fontSize: "2.4vh",
       fontWeight: 400,
       fontFamily: "\"Barlow\", \"Arial\", \"sans-serif\", \"Roboto\"",
       color: '#000000'
     },
     h5: {
-      fontSize: "1.6vh",
+      fontSize: "2.3vh",
       fontWeight: 400,
       fontFamily: "\"Barlow\", \"Arial\", \"sans-serif\", \"Roboto\"",
       color: '#000000'
     },
     h6: {
-      fontSize: "1.5vh",
+      fontSize: "2.2vh",
       fontWeight: 400,
       fontFamily: "\"Barlow\", \"Arial\", \"sans-serif\", \"Roboto\"",
       color: '#000000'
     },
     subtitle1: {
-      fontSize: "2vh",
+      fontSize: "2.1vh",
       fontWeight: 400,
       fontFamily: "\"Barlow\", \"Arial\", \"sans-serif\", \"Roboto\"",
       lineHeight: "1.5em",
       color: '#000000'
     },
     subtitle2: {
-      fontSize: "2vh",
+      fontSize: "2.1vh",
       fontWeight: 400,
       fontFamily: "\"Barlow\", \"Arial\", \"sans-serif\", \"Roboto\"",
       color: '#000000'
     },
     body1: {
-      fontSize: "1rem",
+      fontSize: "2vh",
       fontWeight: 400,
       fontFamily: "\"Lato\", \"Arial\", \"sans-serif\", \"Roboto\"",
       color: '#000000'
     },
     body2: {
-      fontSize: "1rem",
+      fontSize: "2vh",
       fontWeight: 400,
       fontFamily: "\"Lato\", \"Arial\", \"sans-serif\", \"Roboto\"",
       color: '#000000'
     },
     caption: {
-      fontSize: "1.2vh",
+      fontSize: "1.9vh",
       fontWeight: 400,
       fontFamily: "\"Lato\", \"Arial\", \"sans-serif\", \"Roboto\"",
       color: orange[900]
     },
     button: {
-      fontSize: "1.2vh",
+      fontSize: "2vh",
       textTransform: "uppercase",
       fontWeight: 500,
       fontFamily: "\"Lato\", \"Arial\", \"sans-serif\", \"Roboto\"",

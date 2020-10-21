@@ -13,10 +13,40 @@ import {
   Coin
 } from '../../types'
 
-import { Transaction, File, Misc } from '../../../config'
+import { Config, Transaction, File, Misc } from '../../../config'
 
 // @ts-ignore
 import { Minima } from './minima'
+
+const initScript = (random: string) => {
+  return async (dispatch: AppDispatch, getState: Function) => {
+
+    const state = getState()
+    const status = state.chainInfo.data.status
+    const fileContract  = `let this=${random} return false`
+
+    //console.log("in initScript: ", fileContract)
+
+    Minima.cmd("newscript \"" + fileContract + "\";", function(respJSON: any) {
+
+         if( Minima.util.checkAllResponses(respJSON) ) {
+
+          let chainData: ChainDataProps = {
+            data: {
+              scriptAddress: respJSON[0].response.address.hexaddress,
+              status: status
+            }
+          }
+
+          dispatch(write({data: chainData.data})(ChainDataActionTypes.ADD_DATA))
+
+        } else {
+
+          Minima.log("newscript failed")
+        }
+    })
+  }
+}
 
 export const init = () => {
     return async (dispatch: AppDispatch, getState: Function) => {
@@ -24,42 +54,41 @@ export const init = () => {
       Minima.init()
       //Minima.logging = true
 
-      const state = getState()
-      const status = state.chainInfo.data.status
+      Minima.file.loadHEX(Config.hexFile, function(resp: any) {
 
-      Minima.cmd("random;", function(respJSON: any) {
-          //console.log("random: ", respJSON)
+          //console.log("loadFile: ", resp)
 
-          if( Minima.util.checkAllResponses(respJSON) ) {
+          if(resp.exists) {
 
-            const rand = respJSON[0].response.random
-            const fileContract  = `let this=${rand} return false`
+            //console.log("loading hex: ", resp)
+            dispatch(initScript(resp.data))
 
-            //console.log(fileContract)
+          } else {
 
-            Minima.cmd("newscript \"" + fileContract + "\";", function(respJSON: any) {
+            Minima.cmd("random;", function(respJSON: any) {
 
-                /*Minima.log("In newscript")
-                console.log(respJSON)*/
+              if( Minima.util.checkAllResponses(respJSON) ) {
 
-                 if( Minima.util.checkAllResponses(respJSON) ) {
+                //console.log("generating hex: ", respJSON[0].response.random)
+                Minima.file.saveHEX(respJSON[0].response.random, Config.hexFile, function(resp: any) {
 
-                  let chainData: ChainDataProps = {
-                    data: {
-                      scriptAddress: respJSON[0].response.address.hexaddress,
-                      status: status
-                    }
+                  if(!resp.success) {
+                    console.log(resp)
                   }
+                })
 
-                  //Minima.log("Init Script address: "+ chainData.data.scriptAddress)
-                  dispatch(write({data: chainData.data})(ChainDataActionTypes.ADD_DATA))
-                } else {
+                dispatch(initScript(respJSON[0].response.random))
 
-                  Minima.log("newscript failed")
-                }
+              } else {
+
+                // should never get here, but just in case...
+                console.log("random number failed!")
+                dispatch(initScript(""))
+
+              }
             })
           }
-     	})
+      })
   }
 }
 
@@ -231,7 +260,7 @@ export const getFiles = () => {
       Minima.cmd("coins relevant address:"+ scriptAddress + ";", function(respJSON: any) {
       //Minima.cmd("coins;", function(respJSON: any) {
 
-        console.log("blah: ", respJSON, " address: ", scriptAddress)
+        //console.log("blah: ", respJSON, " address: ", scriptAddress)
 
         if( Minima.util.checkAllResponses(respJSON) ) {
 
