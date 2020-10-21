@@ -8,7 +8,7 @@ export const Okay = withStyles({
   root: {
     boxShadow: 'none',
     textTransform: 'none',
-    fontSize: '2vh',
+    fontSize: '15px',
     padding: '6px 12px',
     border: '1px solid',
     background:'linear-gradient(#929396, #929396)',

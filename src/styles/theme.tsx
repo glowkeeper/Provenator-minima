@@ -169,7 +169,7 @@ const themeStyles = makeStyles({
     height: "75px",
     width: "100vw",
     position: 'absolute',
-    top: '4px'
+    top: '0'
   },
   title: {
     padding: theme.spacing(1),
@@ -185,14 +185,14 @@ const themeStyles = makeStyles({
   },
   content: {
     padding: theme.spacing(1),
-    margin: theme.spacing(1),
+    margin: theme.spacing(0),
     color: theme.palette.text.primary,
     background: 'linear-gradient(#FFFFFF, #FFFFFF)',
     overflow: 'auto',
-    height: '80vh',
     width: "100vw",
     position: 'absolute',
-    top: '80px'
+    bottom: '120px',
+    top: '75px'
   },
   caption: {
     padding: theme.spacing(1),
@@ -205,10 +205,10 @@ const themeStyles = makeStyles({
     margin: theme.spacing(0),
     textAlign: 'center',
     background: 'linear-gradient(#27737e, #27737e)',
-    height: "10vh",
+    height: "120px",
     width: "100vw",
     position: 'absolute',
-    bottom: '4px'
+    bottom: '0'
   },
   footerLinks: {
     background: 'linear-gradient(#27737e, #27737e)',
