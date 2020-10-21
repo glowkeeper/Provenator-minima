@@ -106,8 +106,9 @@ export const status = () => {
           const thisValue: string = value as string
           const thisKey: string = key as string
           const thisLine =  `**${thisKey}** ${delimiter} ${thisValue}`
-          if (thisLine.length > 25) {
-            const thisStatus = thisLine.match(/.{1,25}/g)
+          const intViewportWidth = window.innerWidth;
+          if (thisLine.length > intViewportWidth) {
+            const thisStatus = thisLine.match(/.{1,intViewportWidth}/g)
             if ( thisStatus ) {
               for (let i = 0; i < thisStatus.length; i++ ) {
                 status += `${thisStatus[i]}<br/>`
