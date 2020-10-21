@@ -106,17 +106,15 @@ export const status = () => {
           const thisValue: string = value as string
           const thisKey: string = key as string
           const thisLine =  `**${thisKey}** ${delimiter} ${thisValue}`
-          const intViewportWidth = window.innerWidth;
+          const intViewportWidth = window.innerWidth
           if (thisLine.length > intViewportWidth) {
-            const thisStatus = thisLine.match(/.{1,intViewportWidth}/g)
+            const regEx = new RegExp(".{1," + intViewportWidth.toString() + "}", "g")
+            console.log(regEx)
+            const thisStatus = thisLine.match(regEx)
             if ( thisStatus ) {
               for (let i = 0; i < thisStatus.length; i++ ) {
                 status += `${thisStatus[i]}<br/>`
               }
-            } else {
-                // should never get here
-                // check for 'thisStatus' is just to satisfy Typescript
-                status += `<br/>`
             }
           } else {
             status += `${thisLine}<br/>`

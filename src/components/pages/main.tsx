@@ -23,6 +23,7 @@ import PermDataSettingIcon from '@material-ui/icons/PermDataSetting'
 import Tooltip from '@material-ui/core/Tooltip'
 
 import minimaLogo from '../../images/minimaLogo.png'
+import appName from '../../images/appName.png'
 
 import { themeStyles } from '../../styles'
 
@@ -45,9 +46,7 @@ export const Main = () => {
                   <img className={classes.logo} src={minimaLogo}/>
                 </Grid>
                 <Grid item xs={3}>
-                  <h1>
-                    {App.appName}
-                  </h1>
+                  <img className={classes.logo} src={appName}/>                  
                 </Grid>
 
                 <Grid item container justify="flex-end" xs={8}>
