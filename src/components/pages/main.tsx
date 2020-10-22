@@ -1,5 +1,6 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink, Redirect } from 'react-router-dom'
+import { useHistory } from "react-router-dom"
 
 import Markdown from 'react-markdown'
 import Grid from '@material-ui/core/Grid'
@@ -31,6 +32,13 @@ import { Paths, Local, Help } from '../../config'
 
 export const Main = () => {
 
+  let path = window.location.href
+  const indexOf = path.indexOf("index")
+  if (indexOf > -1) {
+      const redirect = path.substr(0, indexOf)
+      window.location.href = redirect
+  }
+
   const classes = themeStyles()
 
   return (
@@ -46,7 +54,7 @@ export const Main = () => {
                   <img className={classes.logo} src={minimaLogo}/>
                 </Grid>
                 <Grid item xs={3}>
-                  <img className={classes.logo} src={appName}/>                  
+                  <img className={classes.logo} src={appName}/>
                 </Grid>
 
                 <Grid item container justify="flex-end" xs={8}>

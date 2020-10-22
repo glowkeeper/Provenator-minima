@@ -22,7 +22,7 @@ import { Okay } from '../../styles'
 import { addFile } from '../../store/app/blockchain'
 import { initialise as txInitialise } from '../../store/app/tx/actions'
 
-import { history, getDictEntries } from '../../utils'
+import { getDictEntries } from '../../utils'
 
 import { FormHelpers, GeneralError, Transaction, Local, Misc, File as FileConfig } from '../../config'
 
@@ -68,7 +68,7 @@ const getFile = (props: Props) => {
       } else {
 
         const txData: TxData = props.info.data as TxData
-        if( txData.txId != "" ) {            
+        if( txData.txId != "" ) {
             const infoData = getDictEntries(props.info)
             setInfo( infoData )
             setSubmit(false)

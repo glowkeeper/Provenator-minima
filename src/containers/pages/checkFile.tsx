@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react'
+import { useHistory } from "react-router-dom"
 import { connect } from 'react-redux'
 
 import Markdown from 'react-markdown'
@@ -21,7 +22,7 @@ import { Okay } from '../../styles'
 import { checkFile } from '../../store/app/blockchain'
 import { initialise as checkInitialise } from '../../store/app/check/actions'
 
-import { history, getDictEntries } from '../../utils'
+import { getDictEntries } from '../../utils'
 
 import { FormHelpers,
          GeneralError,
@@ -67,6 +68,8 @@ const getFile = (props: Props) => {
     const [hash, setHash] = useState("")
     const [isSubmitting, setSubmit] = useState(false)
     const [info, setInfo] = useState("")
+
+    let history = useHistory()
 
     useEffect(() => {
 
