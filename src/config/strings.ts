@@ -1,8 +1,8 @@
 class App {
-
+  
+  static readonly title = 'Minima'
   static readonly appName = 'Provenator'
   static readonly catchLine = 'Digital asset provenance on the blockchain'
-  static readonly title = 'Minima'
   static readonly tagline = ''
   static readonly copyright = '© Copyright 2020 Minima GmbH'
   static readonly author = '[Steve Huckle](https://glowkeeper.github.io/)'
@@ -51,19 +51,19 @@ class Home {
 
   static readonly heading = 'Home'
 
-  static readonly info = `<h3>${App.catchLine}</h3>Provenator is an application for proving the origins of captured digital media. It uses cryptographic tools and blockchain technology. By using the trust mechanisms of blockchains, the application aims to show, beyond doubt, the provenance of any source of digital media.<br/><br/>Provenance plays an essential role in the information era because it adds integrity and authenticity to the data we all consume. Verifiable provenance discourages impropriety by increasing the transparency and accountability of digital assets. However, formal verification of digital media is challenging. Fortunately, blockchains offer innovative solutions to those challenges by giving content creators the tools that allow hem to establish the ownership of their creations.`
+  static readonly info = `<h3>${App.catchLine}</h3>${App.appName} is an application for proving the origins of captured digital media. It uses cryptographic tools and blockchain technology. By using the trust mechanisms of blockchains, the application aims to show, beyond doubt, the provenance of any source of digital media.<br/><br/>Provenance plays an essential role in the information era because it adds integrity and authenticity to the data we all consume. Verifiable provenance discourages impropriety by increasing the transparency and accountability of digital assets. However, formal verification of digital media is challenging. Fortunately, blockchains offer innovative solutions to those challenges by giving content creators the tools that allow hem to establish the ownership of their creations.`
 }
 
 class About {
 
-  static readonly heading = 'About Provenator'
+  static readonly heading = `About ${App.appName}`
 
   static readonly info = `**${App.appName}** version ${App.version}<br /><br />Created by _${App.author}_<br /><br />${App.copyright}`
 }
 
 class Help {
 
-  static readonly heading = 'Provenator Help'
+  static readonly heading = `${App.appName} Help`
 
   static readonly info = `Use **${App.appName}** to prove the provenance of your digital files. <br/><br/>Select _${Paths.addFile}_ to add a file to ${App.title}.<br/><br/>Select _${Paths.checkFile}_ to examine whether a file has already been added to ${App.title} - if it has not, then _${Paths.checkFile}_ redirects to _${Paths.addFile}_.<br/><br/>Select _${Paths.listFiles}_ to list the files you have already added to ${App.title}.`
 
