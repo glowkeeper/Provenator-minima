@@ -158,7 +158,7 @@ const themeStyles = makeStyles({
     position: 'relative'
   },
   logo: {
-    padding: theme.spacing(1),
+    padding: theme.spacing(0),
     margin: theme.spacing(0)
   },
   header: {
@@ -172,7 +172,7 @@ const themeStyles = makeStyles({
     top: '0'
   },
   title: {
-    padding: theme.spacing(1),
+    padding: theme.spacing(0),
     margin: theme.spacing(0),
     textAlign: 'left',
     background: 'linear-gradient(#27737e, #27737e)'
