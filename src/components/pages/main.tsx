@@ -54,7 +54,7 @@ export const Main = () => {
                   <img className={classes.logo} src={minimaLogo}/>
                 </Grid>
                 <Grid item xs={3}>
-                  <img className={classes.logo} src={appName}/>
+                  <img className={classes.title} src={appName}/>
                 </Grid>
 
                 <Grid item container justify="flex-end" xs={8}>

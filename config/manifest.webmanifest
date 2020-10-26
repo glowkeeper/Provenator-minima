@@ -1,0 +1,13 @@
+{
+  "short_name": "Provenator",
+  "name": "Provenator",
+  "description": "Digital asset provenance on Minima",
+  "start_url": "./"
+  "icons": [
+    {
+      "src": "./images/provenatorIcon.png",
+      "type": "image/png",
+      "sizes": "240x240"
+    }
+  ]
+}
