@@ -4,11 +4,6 @@ import { createMuiTheme, responsiveFontSizes } from '@material-ui/core/styles'
 import { makeStyles } from '@material-ui/styles'
 import { withStyles } from '@material-ui/core/styles'
 
-import Button from '@material-ui/core/Button'
-import Menu from '@material-ui/core/Menu'
-import MenuItem from '@material-ui/core/MenuItem'
-import { Form } from 'formik'
-
 import red from '@material-ui/core/colors/red'
 import blue from '@material-ui/core/colors/blue'
 import green from '@material-ui/core/colors/blue'
