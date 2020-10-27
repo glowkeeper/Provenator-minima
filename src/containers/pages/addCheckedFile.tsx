@@ -7,12 +7,6 @@ import Markdown from 'react-markdown'
 
 import SparkMD5 from 'spark-md5'
 
-import * as Yup from 'yup'
-
-import { Formik, Form, Field, FormikProps } from 'formik'
-import { FormControl } from '@material-ui/core'
-import { TextField } from "material-ui-formik-components"
-
 import Tooltip from '@material-ui/core/Tooltip'
 
 import Grid from '@material-ui/core/Grid'
@@ -34,11 +28,6 @@ import {
     TxData
 } from '../../store/types'
 
-const addFileSchema = Yup.object().shape({
-  fileHash: Yup.string()
-    .required(`${GeneralError.required}`)
-})
-
 interface FileStateProps {
   info: PayloadProps
 }
@@ -53,9 +42,9 @@ type Props =  FileDispatchProps & FileStateProps
 const getFile = (props: Props) => {
 
     let isFirstRun = useRef(true)
-    const [isLoading, setIsLoading] = useState(false)
+    const [submitting, setSubmitting] = useState(false)
+    const [submitEnabled, setSubmitEnabled] = useState(true)
     const {fileName, hash} = useParams()
-    const [isSubmitting, setSubmit] = useState(false)
     const [info, setInfo] = useState("")
 
     useEffect(() => {
@@ -71,11 +60,27 @@ const getFile = (props: Props) => {
         if( txData.txId != "" ) {
             const infoData = getDictEntries(props.info)
             setInfo( infoData )
-            setSubmit(false)
+            setSubmitting(false)
+            setSubmitEnabled(false)
         }
       }
 
     }, [props.info])
+
+
+    const doSubmit = () => {
+
+      setSubmitting(true)
+      setSubmitEnabled(false)
+      props.initialise()
+
+      const fileInfo: FileProps = {
+          hash: hash,
+          name: fileName
+      }
+      props.handleSubmit(fileInfo)
+
+    }
 
     return (
       <>
@@ -84,45 +89,14 @@ const getFile = (props: Props) => {
         <p>
           <b>{FileConfig.fileName}</b>: {fileName}
         </p>
-        <b>{FileConfig.hash}</b>:<br/>
-        <Formik
-          initialValues={ {fileHash: hash} }
-          enableReinitialize={true}
-          validationSchema={addFileSchema}
-          onSubmit={(values: any) => {
-
-            setSubmit(true)
-            props.initialise()
-
-            const fileInfo: FileProps = {
-                fileHash: hash,
-            }
-            props.handleSubmit(fileInfo)
-          }}
-        >
-          {(formProps: FormikProps<any>) => (
-            <Form>
-              <FormControl fullWidth={true}>
-                  <Field
-                    name='fileHash'
-                    component={TextField}
-                  />
-                  <Grid container>
-                      <Grid item xs={12} sm={3}>
-                        <Tooltip title={FileConfig.checkTip}>
-                          <Okay type='submit' variant="contained" color="primary" disabled={isSubmitting} endIcon={<RightCircleOutlined spin={isSubmitting}/>}>
-                            {FileConfig.addFileButton}
-                          </Okay>
-                        </Tooltip>
-                      </Grid>
-                      <Grid item xs={12} sm={9}>
-                          &nbsp;
-                      </Grid>
-                  </Grid>
-              </FormControl>
-            </Form>
-        )}
-        </Formik>
+        <p>
+          <b>{FileConfig.hash}</b>: {hash}
+        </p>
+        <Tooltip title={FileConfig.submitTip}>
+          <Okay onClick={doSubmit} variant="contained" disabled={!submitEnabled} endIcon={<RightCircleOutlined spin={submitting}/>}>
+            {FileConfig.addFileButton}
+          </Okay>
+        </Tooltip>
         <hr />
         <Markdown escapeHtml={false} source={info} />
       </>

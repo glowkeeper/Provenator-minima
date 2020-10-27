@@ -52,7 +52,7 @@ const filesReader = (props: Props) => {
                     const renderHTML = (
                         <React.Fragment key={props.files.data[i].hash}>
                         <p>
-                            {Files.hash}: {props.files.data[i].hash}<br/>
+                            {Files.hash}: {props.files.data[i].hash}<br/>{Files.fileName}: {props.files.data[i].name}<br/>
                             {Files.block}: {props.files.data[i].block}
                         </p>
                         </React.Fragment>

@@ -1,5 +1,5 @@
 class App {
-  
+
   static readonly title = 'Minima'
   static readonly appName = 'Provenator'
   static readonly catchLine = 'Digital asset provenance on the blockchain'
@@ -41,8 +41,8 @@ class Transaction {
 
     static readonly pending = "Please wait - transaction is pending"
     static readonly unnecessary = `File already on ${App.title}`
-    static readonly success = "Added successfully"
-    static readonly failure = 'Addition Failed'
+    static readonly success = `Added to ${App.title} successfully. The hash will not appear in your list until the Tx has been mined`
+    static readonly failure = 'Hash addition Failed!'
 
     static readonly errorGettingData = "Error getting data"
 }
@@ -110,6 +110,7 @@ class Files {
     static readonly heading = "Files"
     static readonly listFilesInfo = "(If you just added a file, you may need to wait for its hash to be mined before it appears here)"
     static readonly hash = "Hash"
+    static readonly fileName = "Name"
     static readonly block = "Block"
 }
 

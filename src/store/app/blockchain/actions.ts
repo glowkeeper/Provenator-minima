@@ -161,7 +161,7 @@ export const addFile = (props: FileProps) => {
         const coins = respJSON[0].response.coins
         for ( let i = 0; i < coins.length; i++ ) {
           if (coins[i].data.coin.address == scriptAddress) {
-            if (props.fileHash == coins[i].data.prevstate[0].data) {
+            if (props.hash == coins[i].data.prevstate[0].data) {
               checkData = {
                 in: true,
                 block: coins[i].data.inblock
@@ -181,7 +181,8 @@ export const addFile = (props: FileProps) => {
 
           const addFileScript =
       			"txncreate "+ txnId + ";" +
-      			"txnstate " + txnId + " 0 " + props.fileHash + ";" +
+      			"txnstate " + txnId + " 0 " + props.hash + ";" +
+      			"txnstate " + txnId + " 1 " + props.name + ";" +
             "txnauto " + txnId + " " + txAmount + " " + scriptAddress + ";" +
             "txnpost " + txnId + ";" +
       			"txndelete " + txnId + ";";
@@ -228,7 +229,7 @@ export const checkFile = (props: FileProps) => {
           const coins = respJSON[0].response.coins
           for ( let i = 0; i < coins.length; i++ ) {
             if (coins[i].data.coin.address == scriptAddress) {
-              if (props.fileHash == coins[i].data.prevstate[0].data) {
+              if (props.hash == coins[i].data.prevstate[0].data) {
                 checkData = {
                   in: true,
                   block: coins[i].data.inblock
@@ -269,6 +270,7 @@ export const getFiles = () => {
             if (coins[i].data.coin.address == scriptAddress) {
               const coin: Coin = {
                 hash: coins[i].data.prevstate[0].data,
+                name: coins[i].data.prevstate[1].data,
                 block: coins[i].data.inblock
               }
               fileData.push(coin)

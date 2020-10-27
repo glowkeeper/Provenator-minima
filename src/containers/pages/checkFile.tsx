@@ -6,12 +6,6 @@ import Markdown from 'react-markdown'
 
 import SparkMD5 from 'spark-md5'
 
-import * as Yup from 'yup'
-
-import { Formik, Form, Field, FormikProps } from 'formik'
-import { FormControl } from '@material-ui/core'
-import { TextField } from "material-ui-formik-components"
-
 import Tooltip from '@material-ui/core/Tooltip'
 import FileReaderInput from 'react-file-reader-input'
 
@@ -43,12 +37,6 @@ import {
 
 //import { TxHelper } from '../../components/tx/txHelper'
 
-const checkFileSchema = Yup.object().shape({
-  fileHash: Yup.string()
-    .required(`${GeneralError.required}`)
-})
-
-
 interface FileStateProps {
   info: PayloadProps
 }
@@ -64,9 +52,11 @@ const getFile = (props: Props) => {
 
     let isFirstRun = useRef(true)
     const [isLoading, setIsLoading] = useState(false)
+    const [fileEnabled, setFileEnabled] = useState(true)
+    const [submitting, setSubmitting] = useState(false)
+    const [submitEnabled, setSubmitEnabled] = useState(false)
     const [fileName, setFileName] = useState("")
     const [hash, setHash] = useState("")
-    const [isSubmitting, setSubmit] = useState(false)
     const [info, setInfo] = useState("")
 
     let history = useHistory()
@@ -86,7 +76,11 @@ const getFile = (props: Props) => {
 
             const infoData = getDictEntries(props.info)
             setInfo( infoData )
-            setSubmit(false)
+            setIsLoading(false)
+            setFileEnabled(true)
+            setSubmitting(false)
+            setSubmitEnabled(false)
+
             if ( checkBlock == FileConfig.noBlock ) {
 
               const pathAddFile = `${Local.addChecked}/${fileName}/${hash}`
@@ -125,12 +119,18 @@ const getFile = (props: Props) => {
                 const hash = spark.end()
                 setHash(hash)
                 setIsLoading(false)
+                setFileEnabled(true)
+                setSubmitting(false)
+                setSubmitEnabled(true)
             }
         }
 
         fileReader.onerror = () => {
             setIsLoading(false)
-            console.warn(`${FileConfig.loadingError}`)
+            setFileEnabled(true)
+            setSubmitting(false)
+            setSubmitEnabled(false)
+            setInfo(`${FileConfig.loadingError}`)
         }
 
         const loadNext = () => {
@@ -144,10 +144,25 @@ const getFile = (props: Props) => {
     }
 
     const setLoading = () => {
+
+        setIsLoading(true)
+        setFileEnabled(false)
         setFileName("")
         setHash("")
-        setIsLoading(!isLoading)
         setInfo("")
+    }
+
+    const doSubmit = () => {
+
+      setSubmitting(true)
+      setSubmitEnabled(false)
+      props.initialise()
+
+      const fileInfo: FileProps = {
+          hash: hash,
+          name: fileName
+      }
+      props.handleSubmit(fileInfo)
     }
 
     return (
@@ -160,7 +175,7 @@ const getFile = (props: Props) => {
           onChange={getFile}
         >
             <Tooltip title={FileConfig.fileTip}>
-                <Okay onClick={setLoading} type='submit' variant="contained" color="primary" disabled={isLoading} endIcon={<RightCircleOutlined spin={isLoading}/>}>
+                <Okay onClick={setLoading} variant="contained" disabled={!fileEnabled} endIcon={<RightCircleOutlined spin={isLoading}/>}>
                   {FileConfig.getFile}
                 </Okay>
             </Tooltip>
@@ -168,45 +183,14 @@ const getFile = (props: Props) => {
         <p>
           <b>{FileConfig.fileName}</b>: {fileName}
         </p>
-        <b>{FileConfig.hash}</b>:<br/>
-        <Formik
-          initialValues={ {fileHash: hash} }
-          enableReinitialize={true}
-          validationSchema={checkFileSchema}
-          onSubmit={(values: any) => {
-
-            setSubmit(true)
-            props.initialise()
-
-            const fileInfo: FileProps = {
-                fileHash: hash,
-            }
-            props.handleSubmit(fileInfo)
-          }}
-        >
-          {(formProps: FormikProps<any>) => (
-            <Form>
-              <FormControl fullWidth={true}>
-                  <Field
-                    name='fileHash'
-                    component={TextField}
-                  />
-                  <Grid container>
-                      <Grid item xs={12} sm={3}>
-                        <Tooltip title={FileConfig.checkTip}>
-                          <Okay type='submit' variant="contained" color="primary" disabled={isSubmitting} endIcon={<RightCircleOutlined spin={isSubmitting}/>}>
-                            {FileConfig.checkFileButton}
-                          </Okay>
-                        </Tooltip>
-                      </Grid>
-                      <Grid item xs={12} sm={9}>
-                          &nbsp;
-                      </Grid>
-                  </Grid>
-              </FormControl>
-            </Form>
-        )}
-        </Formik>
+        <p>
+          <b>{FileConfig.hash}</b>: {hash}
+        </p>
+        <Tooltip title={FileConfig.checkTip}>
+          <Okay onClick={doSubmit} variant="contained" disabled={!submitEnabled} endIcon={<RightCircleOutlined spin={submitting}/>}>
+            {FileConfig.checkFileButton}
+          </Okay>
+        </Tooltip>
         <hr />
         <Markdown escapeHtml={false} source={info} />
       </>

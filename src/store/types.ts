@@ -58,6 +58,7 @@ export interface InfoData {
 // Get stuff
 export interface Coin {
   hash: string
+  name: string
   block: string
 }
 
@@ -89,11 +90,12 @@ export interface TransactionProps extends PayloadProps {
 
 // Extra info stuff
 export interface FileProps {
-    fileHash: string
+    hash: string
+    name: string
 }
 
 export interface FileInfoProps {
-    fileInfo: Array<FileProps>
+    info: Array<FileProps>
 }
 
 // Action types
