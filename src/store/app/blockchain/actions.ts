@@ -8,7 +8,6 @@ import {
   GetActionTypes,
   CheckActionTypes,
   FileProps,
-  CheckProps,
   CheckData,
   Coin
 } from '../../types'
