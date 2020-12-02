@@ -8,13 +8,14 @@ import {
   GetActionTypes,
   CheckActionTypes,
   FileProps,
-  GetProps,
   CheckProps,
   CheckData,
   Coin
 } from '../../types'
 
 import { Config, Transaction, File, Misc } from '../../../config'
+
+import { init as initServer, bootstrap } from '../server/actions'
 
 // @ts-ignore
 import { Minima } from './minima'
@@ -56,12 +57,11 @@ export const init = () => {
 
         //console.log(msg)
 
-        /*if ( msg.event == "connected" ) {
+        if ( msg.event == "connected" ) {
 
-          Minima.minidapps.list( function( listMsg: any ) {
-        			console.log(listMsg)
-        	})
-        }*/
+          dispatch(initServer())
+          dispatch(bootstrap())
+        }
       })
   }
 }

@@ -101,6 +101,7 @@ export interface FileInfoProps {
 // Services
 export const enum MyServices {
   HELP = '/help',
+  FILE = '/file',
   FILES = '/files',
   SERVICES = '/services'
 }

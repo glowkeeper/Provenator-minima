@@ -21,7 +21,31 @@ export const init = () => {
 
         if ( msg.message == `${MyServices.SERVICES}` ) {
 
-          Minima.minidapps.reply( msg.replyid, `${MyServices.HELP} ${MyServices.FILES}`)
+          Minima.minidapps.reply( msg.replyid, `${MyServices.HELP} ${MyServices.FILE} ${MyServices.FILES}`)
+
+        } else if ( msg.message == `${MyServices.FILE} ${Config.hexFile}` ) {
+
+          Minima.file.loadHEX(Config.hexFile, function( resp: any ) {
+
+            if(resp.exists) {
+
+              //console.log("loading hex: ", resp)
+              Minima.minidapps.reply( msg.replyid, resp.data)
+
+            } else {
+
+              // pretty sure we'll never get here
+              Minima.cmd("random;", function(respJSON: any) {
+
+                if( Minima.util.checkAllResponses(respJSON) ) {
+
+                  //console.log("generating hex: ", respJSON[0].response.random)
+                  Minima.minidapps.reply( msg.replyid, respJSON[0].response.random)
+                }
+              })
+
+            }
+          })
 
         } else if ( msg.message == `${MyServices.FILES}` ) {
 
@@ -42,7 +66,7 @@ export const init = () => {
             Minima.minidapps.reply( msg.replyid, myFilesJSON)
           })
 
-        }  else if ( msg.message == `${MyServices.HELP}` ) {
+        } else if ( msg.message == `${MyServices.HELP}` ) {
 
           Minima.minidapps.reply( msg.replyid, "How can I help you, my son?")
 
@@ -61,45 +85,73 @@ export const bootstrap = () => {
 
     Minima.file.load(Config.hasInit, function( resp: any ) {
 
-      //console.log("loadFile: ", resp)
-
       if(!resp.exists) {
 
-        Minima.file.save("", Config.hasInit, function(resp: any) {
+        //need to fetch data from previous version
+        Minima.minidapps.list( function( listMsg: any ) {
 
-          if(!resp.success) {
-            console.error(resp)
-          }
+          const miniDapps = listMsg.response.minidapps
 
-          //need to fetch data from previous version
-          Minima.minidapps.list( function( listMsg: any ) {
+          let hasInit = false
+          for ( let i = 0; i < miniDapps.length; i++ ) {
 
-            const miniDapps = listMsg.response.minidapps
+            if ( miniDapps[i].name == "Provenator" ) {
 
-            for ( let i = 0; i < miniDapps.length; i++ ) {
+              Minima.minidapps.send( miniDapps[i].uid, `${MyServices.FILES}`, function ( filesMsg: any ) {
 
-              if ( miniDapps[i].name == "Provenator" ) {
+                if( filesMsg.response.hasOwnProperty('reply') ) {
 
-                Minima.minidapps.send( miniDapps[i].uid, "/services", function ( msg: any ) {
+                  if ( filesMsg.response.reply.includes(Config.hexFile) ) {
 
-                  if ( msg.response.reply.includes("/files") ) {
+                    Minima.minidapps.send( miniDapps[i].uid, `${MyServices.FILE} ${Config.hexFile}`, function ( fileMsg: any ) {
 
-                    Minima.minidapps.send( miniDapps[i].uid, "/files", function ( msg: any ) {
+                      if( fileMsg.response.hasOwnProperty('reply') ) {
 
-                      console.log("In provenator bootstrap Files: ", msg)
+                        Minima.file.saveHEX(fileMsg.response.reply, Config.hexFile, function(resp: any) {
+
+                          if(!resp.success) {
+
+                            console.error(resp)
+
+                          } else {
+
+                            Minima.file.save("", Config.hasInit, function(resp: any) {
+
+                              if(!resp.success) {
+                                console.error(resp)
+                              }
+                            })
+
+                          }
+
+                          dispatch(initHex())
+                        })
+
+                      } else {
+
+                        dispatch(initHex())
+
+                      }
 
                     })
+                  } else {
+
+                    dispatch(initHex())
+
                   }
-                })
-              }
+                } else {
+
+                  dispatch(initHex())
+
+                }
+              })
             }
-          })
+          }
         })
 
       } else {
 
-        // we should already have what we need...
-        dispatch(initHex())
+          dispatch(initHex())
       }
     })
   }
@@ -108,9 +160,11 @@ export const bootstrap = () => {
 const initHex = () => {
   return async (dispatch: AppDispatch) => {
 
+    console.log("init hex")
+
     Minima.file.loadHEX(Config.hexFile, function( resp: any ) {
 
-        //console.log("loadFile: ", resp)
+        console.log("loadFile: ", resp)
 
         if(resp.exists) {
 

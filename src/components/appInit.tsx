@@ -1,40 +1,31 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import { init as chainInit } from '../store/app/blockchain/actions'
-import { init as serverInit, bootstrap } from '../store/app/server/actions'
+import { init  } from '../store/app/blockchain/actions'
 
 import { ApplicationState, AppDispatch } from '../store/types'
 
 interface ChainInitDispatchProps {
-    chainInit: () => void
-    serverInit: () => void
-    bootstrap: () => void
+    init: () => void
 }
 
 const defaultProps: ChainInitDispatchProps = {
-    chainInit: () => {},
-    serverInit: () => {},
-    bootstrap: () => {}
+    init: () => {}
 }
 
-const init = ( props: ChainInitDispatchProps = defaultProps ) => {
+const app = ( props: ChainInitDispatchProps = defaultProps ) => {
 
-    props.chainInit()
-    props.serverInit()
-    props.bootstrap()
+    props.init()
     return null
  }
 
  const mapDispatchToProps = (dispatch: AppDispatch): ChainInitDispatchProps => {
    return {
-     chainInit: () => dispatch(chainInit()),
-     serverInit: () => dispatch(serverInit()),
-     bootstrap: () => dispatch(bootstrap())
+     init: () => dispatch(init())
    }
  }
 
  export const AppInit = connect<{}, ChainInitDispatchProps, {}, ApplicationState>(
    null,
    mapDispatchToProps
- )(init)
+ )(app)
