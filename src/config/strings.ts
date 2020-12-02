@@ -35,6 +35,7 @@ class Blockchain {
 class GeneralError {
 
     static readonly required = "Required"
+    static readonly random = "random number failed!"
 }
 
 class Transaction {

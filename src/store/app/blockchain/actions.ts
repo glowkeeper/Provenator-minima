@@ -1,6 +1,7 @@
 import { write } from '../../actions'
 import {
   AppDispatch,
+  MyServices,
   ChainDataProps,
   ChainDataActionTypes,
   TransactionActionTypes,
@@ -18,7 +19,7 @@ import { Config, Transaction, File, Misc } from '../../../config'
 // @ts-ignore
 import { Minima } from './minima'
 
-const initScript = (random: string) => {
+export const initScript = (random: string) => {
   return async (dispatch: AppDispatch, getState: Function) => {
 
     const state = getState()
@@ -51,43 +52,16 @@ const initScript = (random: string) => {
 export const init = () => {
     return async (dispatch: AppDispatch, getState: Function) => {
 
-      Minima.init()
-      //Minima.logging = true
+      Minima.init( function( msg: any ) {
 
-      Minima.file.loadHEX(Config.hexFile, function(resp: any) {
+        //console.log(msg)
 
-          //console.log("loadFile: ", resp)
+        /*if ( msg.event == "connected" ) {
 
-          if(resp.exists) {
-
-            //console.log("loading hex: ", resp)
-            dispatch(initScript(resp.data))
-
-          } else {
-
-            Minima.cmd("random;", function(respJSON: any) {
-
-              if( Minima.util.checkAllResponses(respJSON) ) {
-
-                //console.log("generating hex: ", respJSON[0].response.random)
-                Minima.file.saveHEX(respJSON[0].response.random, Config.hexFile, function(resp: any) {
-
-                  if(!resp.success) {
-                    console.log(resp)
-                  }
-                })
-
-                dispatch(initScript(respJSON[0].response.random))
-
-              } else {
-
-                // should never get here, but just in case...
-                console.log("random number failed!")
-                dispatch(initScript(""))
-
-              }
-            })
-          }
+          Minima.minidapps.list( function( listMsg: any ) {
+        			console.log(listMsg)
+        	})
+        }*/
       })
   }
 }

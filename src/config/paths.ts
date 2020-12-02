@@ -1,5 +1,6 @@
 class Config {
 
+  static readonly hasInit = ".hasInit"
   static readonly hexFile = "hex.txt"
 }
 

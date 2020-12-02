@@ -98,6 +98,13 @@ export interface FileInfoProps {
     info: Array<FileProps>
 }
 
+// Services
+export const enum MyServices {
+  HELP = '/help',
+  FILES = '/files',
+  SERVICES = '/services'
+}
+
 // Action types
 export const enum TransactionActionTypes {
   TRANSACTION_INIT = '@@TransactionActionTypes/TRANSACTION_INIT',
