@@ -2,7 +2,7 @@ class Config {
 
   static readonly hasInit = ".hasInit"
   static readonly myConfig = "minidapp.conf"
-  static readonly hexFile = "hex.txt"
+  static readonly hexFile = ".hex"
 }
 
 class Local {

@@ -21,6 +21,17 @@ export interface ActionProps extends Action {
 
 export type AppDispatch = ThunkDispatch<ApplicationState, any, ActionProps>
 
+// minidapp.conf
+export interface Config {
+  name: string
+  headline: string
+  description: string
+  version: string
+  lastKey: string
+  icon: string
+  category: string
+}
+
 // Blockchain info
 export interface ChainDataProps extends PayloadProps {
   data: {
