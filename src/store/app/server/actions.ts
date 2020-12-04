@@ -45,7 +45,7 @@ export const init = () => {
 
         } else if ( msg.message == `${MyServices.HELP}` ) {
 
-          Minima.minidapps.reply( msg.replyid, "Help")
+          Minima.minidapps.reply( msg.replyid, "Help Me!")
 
         } else {
 
