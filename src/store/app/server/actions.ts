@@ -22,31 +22,7 @@ export const init = () => {
 
         if ( msg.message == `${MyServices.SERVICES}` ) {
 
-          Minima.minidapps.reply( msg.replyid, `${MyServices.HELP} ${MyServices.FILE} ${MyServices.FILES}`)
-
-        } else if ( msg.message == `${MyServices.FILE} ${Config.hexFile}` ) {
-
-          Minima.file.loadHEX(Config.hexFile, function( resp: any ) {
-
-            if (resp.exists) {
-
-              console.log("loading hex: ", resp.data)
-              Minima.minidapps.reply( msg.replyid, resp.data)
-
-            } else {
-
-              // Safety net - we shouldn't really get here as a hex file should exist.
-              Minima.cmd("random;", function(respJSON: any) {
-
-                if ( Minima.util.checkAllResponses(respJSON) ) {
-
-                  //console.log("generating hex: ", respJSON[0].response.random)
-                  Minima.minidapps.reply( msg.replyid, respJSON[0].response.random)
-                }
-              })
-
-            }
-          })
+          Minima.minidapps.reply( msg.replyid, `${MyServices.HELP} ${MyServices.FILES}`)
 
         } else if ( msg.message == `${MyServices.FILES}` ) {
 
@@ -76,7 +52,6 @@ export const init = () => {
           console.error("Unknown service")
         }
       }
-
     })
   }
 }
@@ -98,57 +73,40 @@ export const bootstrap = () => {
             const myConfig: MiniDappConfig = JSON.parse(resp.data)
             const lastKey = myConfig.lastKey
 
-            console.log("lastkey: ", lastKey)
+            Minima.minidapps.send( lastKey, `${MyServices.FILE} ${Config.hexFile}`, function ( fileMsg: any ) {
 
-            //need to fetch data from previous version
-            Minima.minidapps.list( function( listMsg: any ) {
+              console.log("reply: ", fileMsg)
 
-              const miniDapps = listMsg.response.minidapps
+              if( fileMsg.response.hasOwnProperty('reply') ) {
 
-              let hasInit = false
-              for ( let i = 0; i < miniDapps.length; i++ ) {
+                console.log("replied hex: ", fileMsg.response.reply)
 
-                if ( miniDapps[i].uid == lastKey ) {
+                Minima.file.saveHEX(fileMsg.response.reply, Config.hexFile, function(resp: any) {
 
-                  console.log("Made it here: ", miniDapps[i].uid, lastKey)
+                  if(!resp.success) {
 
-                  Minima.minidapps.send( miniDapps[i].uid, `${MyServices.FILE} ${Config.hexFile}`, function ( fileMsg: any ) {
+                    console.error(resp)
 
-                    console.log("reply: ", fileMsg)
+                  } else {
 
-                    if( fileMsg.response.hasOwnProperty('reply') ) {
+                    Minima.file.save("", Config.hasInit, function(resp: any) {
 
-                      console.log("replied hex: ", fileMsg.response.reply)
+                      if(!resp.success) {
+                        console.error(resp)
+                      }
+                    })
 
-                      Minima.file.saveHEX(fileMsg.response.reply, Config.hexFile, function(resp: any) {
+                  }
 
-                        if(!resp.success) {
+                  dispatch(initHex())
+                })
 
-                          console.error(resp)
+              } else {
 
-                        } else {
+                dispatch(initHex())
 
-                          Minima.file.save("", Config.hasInit, function(resp: any) {
-
-                            if(!resp.success) {
-                              console.error(resp)
-                            }
-                          })
-
-                        }
-
-                        dispatch(initHex())
-                      })
-
-                    } else {
-
-                      dispatch(initHex())
-
-                    }
-
-                  })
-                }
               }
+
             })
 
           } else {
