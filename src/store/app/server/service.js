@@ -1,4 +1,4 @@
-Minima.minidapps.onReceive( function( msg ) {
+Minima.minidapps.listen( function( msg ) {
 
   if ( msg.action == "post" && msg.message == "/file .hex" ) {
 
