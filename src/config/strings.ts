@@ -7,7 +7,7 @@ class App {
   static readonly copyright = '© Copyright 2020 Minima GmbH'
   static readonly author = '[Steve Huckle](https://glowkeeper.github.io/)'
   static readonly email = 'steve dot huckle at minima dot global'
-  static readonly version = '0.1.0'
+  static readonly version = '0.1.1'
 }
 
 class Paths {
@@ -52,7 +52,7 @@ class Home {
 
   static readonly heading = 'Home'
 
-  static readonly info = `<h3>${App.catchLine}</h3>${App.appName} is an application for proving the origins of captured digital media. It uses cryptographic tools and blockchain technology. By using the trust mechanisms of blockchains, the application aims to show, beyond doubt, the provenance of any source of digital media.<br/><br/>Provenance plays an essential role in the information era because it adds integrity and authenticity to the data we all consume. Verifiable provenance discourages impropriety by increasing the transparency and accountability of digital assets. However, formal verification of digital media is challenging. Fortunately, blockchains offer innovative solutions to those challenges by giving content creators the tools that allow hem to establish the ownership of their creations.`
+  static readonly info = `<h3>${App.catchLine}</h3>${App.appName} is an application for proving the origins of captured digital media. It uses cryptographic tools and blockchain technology. By using the trust mechanisms of blockchains, the application aims to show, beyond doubt, the provenance of any source of digital media.<br/><br/>Provenance plays an essential role in the information era because it adds integrity and authenticity to the data we all consume. Verifiable provenance discourages impropriety by increasing the transparency and accountability of digital assets. However, formal verification of digital media is challenging. Fortunately, blockchains offer innovative solutions to those challenges by giving content creators the tools that allow them to establish the ownership of their creations.`
 }
 
 class About {
